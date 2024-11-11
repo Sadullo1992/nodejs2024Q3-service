@@ -1,4 +1,4 @@
-import { IsNotEmpty, IsString, IsUUID } from "class-validator";
+import { IsNotEmpty, IsString, IsUUID } from 'class-validator';
 
 export class User {
   @IsUUID('4')
@@ -11,4 +11,10 @@ export class User {
   @IsNotEmpty()
   @IsString()
   password: string;
+
+  version: number;
+
+  createdAt: number;
+
+  updatedAt: number;
 }
