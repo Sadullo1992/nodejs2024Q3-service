@@ -1,5 +1,6 @@
 import { Injectable } from '@nestjs/common';
 import { DatabaseService } from 'src/database/database.service';
+import { AlbumService } from '../album/album.service';
 import { TrackService } from '../track/track.service';
 import { CreateArtistDto } from './dto/create-artist.dto';
 import { UpdateArtistDto } from './dto/update-artist.dto';
@@ -9,7 +10,10 @@ import { Artist } from './entities/artist.entity';
 export class ArtistService {
   private db = new DatabaseService<Artist>();
 
-  constructor(private trackService: TrackService) {}
+  constructor(
+    private trackService: TrackService,
+    private albumService: AlbumService,
+  ) {}
 
   create(createArtistDto: CreateArtistDto) {
     return this.db.create(createArtistDto);
@@ -36,6 +40,14 @@ export class ArtistService {
 
     artistTracks.forEach((track) => {
       track.artistId = null;
+    });
+
+    const artistAlbums = this.albumService
+      .findAll()
+      .filter((album) => album.artistId === id);
+
+    artistAlbums.forEach((album) => {
+      album.artistId = null;
     });
   }
 }
