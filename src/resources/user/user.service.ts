@@ -6,7 +6,8 @@ import { User } from './entities/user.entity';
 
 @Injectable()
 export class UserService {
-  constructor(private db: DatabaseService<User>) {}
+  private db = new DatabaseService<User>();
+
   create(createUserDto: CreateUserDto) {
     const user = {
       ...createUserDto,
