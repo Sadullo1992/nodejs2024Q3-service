@@ -1,12 +1,11 @@
 import { HttpException, HttpStatus, Injectable } from '@nestjs/common';
-import { DatabaseService } from 'src/database/database.service';
+import { PrismaService } from 'src/prisma/prisma.service';
 import { CreateUserDto } from './dto/create-user.dto';
 import { UpdatePasswordDto } from './dto/update-password.dto';
-import { User } from './entities/user.entity';
 
 @Injectable()
 export class UserService {
-  private db = new DatabaseService<User>();
+  constructor(private prisma: PrismaService) {}
 
   create(createUserDto: CreateUserDto) {
     const user = {
@@ -15,35 +14,35 @@ export class UserService {
       createdAt: Date.now(),
       updatedAt: Date.now(),
     };
-    return this.db.create(user);
+    return this.prisma.user.create({ data: user });
   }
 
   findAll() {
-    return this.db.findAll();
+    return this.prisma.user.findMany();
   }
 
   findOne(id: string) {
-    return this.db.findOne(id);
+    return this.prisma.user.findUnique({ where: { id } });
   }
 
-  update(id: string, updatePasswordDto: UpdatePasswordDto) {
-    const user = this.db.findOne(id);
+  async update(id: string, updatePasswordDto: UpdatePasswordDto) {
+    const user = await this.prisma.user.findUnique({ where: { id } });
 
     const isMatch = user.password === updatePasswordDto.oldPassword;
 
     if (!isMatch)
       throw new HttpException('Old password is wrong', HttpStatus.FORBIDDEN);
 
-    const obj = {
+    const data = {
       password: updatePasswordDto.newPassword,
       version: user.version + 1,
       updatedAt: Date.now(),
     };
 
-    return this.db.update(id, obj);
+    return this.prisma.user.update({ where: { id }, data });
   }
 
-  remove(id: string) {
-    this.db.remove(id);
+  async remove(id: string) {
+    return await this.prisma.user.delete({ where: { id } });
   }
 }

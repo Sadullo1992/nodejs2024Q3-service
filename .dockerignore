@@ -1,0 +1,6 @@
+**node_modules
+.*
+Dockerfile.app
+Dockerfile.db
+README.md
+docker-compose.yml

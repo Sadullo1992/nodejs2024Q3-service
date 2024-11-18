@@ -10,6 +10,7 @@ Home Library REST Service! `Users` can create, read, update, delete data about `
 2. Go to `develop` branch
 3. Install the required dependencies by running `npm install`
 4. Put environment variables to `.env` file
+5. Containerization - docker compose: `npm run docker:up`
 
 ## Usage
 
@@ -27,6 +28,19 @@ Home Library REST Service! `Users` can create, read, update, delete data about `
 After application running open new terminal and enter:
 
 To run all tests without authorization: `npm run test`
+
+## Docker 
+
+ - docker compose up: `npm run docker:up`
+ - docker compose build: `npm run docker:build`
+ - docker compose down: `npm run docker:down`
+ - vulnerabilities scanning: `npm run docker:cve:app` and `npm run docker:cve:db`
+
+## Prisma
+
+ - Prisma generate: `npm run prisma:generate` 
+ - Generate migration: `prisma:migration:dev` 
+ - Running migration: `prisma:migration:deploy` 
 
 ## API Endpoints
 
