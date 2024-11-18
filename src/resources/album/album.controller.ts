@@ -21,18 +21,18 @@ export class AlbumController {
 
   @Post()
   @HttpCode(HttpStatus.CREATED)
-  create(@Body() createAlbumDto: CreateAlbumDto) {
-    return this.albumService.create(createAlbumDto);
+  async create(@Body() createAlbumDto: CreateAlbumDto) {
+    return await this.albumService.create(createAlbumDto);
   }
 
   @Get()
-  findAll() {
-    return this.albumService.findAll();
+  async findAll() {
+    return await this.albumService.findAll();
   }
 
   @Get(':id')
-  findOne(@Param('id', ParseUUIDPipe) id: string) {
-    const album = this.albumService.findOne(id);
+  async findOne(@Param('id', ParseUUIDPipe) id: string) {
+    const album = await this.albumService.findOne(id);
 
     if (!album) throw new NotFoundException('Album is not found!');
 
@@ -40,24 +40,24 @@ export class AlbumController {
   }
 
   @Put(':id')
-  update(
+  async update(
     @Param('id', ParseUUIDPipe) id: string,
     @Body() updateAlbumDto: UpdateAlbumDto,
   ) {
-    const album = this.albumService.findOne(id);
+    const album = await this.albumService.findOne(id);
 
     if (!album) throw new NotFoundException('Album is not found!');
 
-    return this.albumService.update(id, updateAlbumDto);
+    return await this.albumService.update(id, updateAlbumDto);
   }
 
   @Delete(':id')
   @HttpCode(HttpStatus.NO_CONTENT)
-  remove(@Param('id', ParseUUIDPipe) id: string) {
-    const album = this.albumService.findOne(id);
+  async remove(@Param('id', ParseUUIDPipe) id: string) {
+    const album = await this.albumService.findOne(id);
 
     if (!album) throw new NotFoundException('Album is not found!');
 
-    return this.albumService.remove(id);
+    await this.albumService.remove(id);
   }
 }
