@@ -3,40 +3,40 @@ services:
   node:
     container_name: app
     restart: unless-stopped
-    build: 
+    build:
       context: .
       dockerfile: Dockerfile.app
     ports:
       - ${PORT}:${PORT}
-    # depends_on:
-    #   - db
+    depends_on:
+      - postgres
     env_file:
       - .env
     volumes:
       - ./:/usr/app
       - ignore:/usr/app/node_modules
-    # networks:
-    #   - app-network
-  # db:
-  #   container_name: db
-  #   restart: unless-stopped
-  #   build: 
-  #     context: .
-  #     dockerfile: Dockerfile.app
-  #   ports:
-  #     - ${POSTGRES_PORT}:${POSTGRES_PORT}
-  #   env_file:
-  #     - .env
-  #   command: ['-c', 'logging_collector=on']
-  #   networks:
-  #     - app-network
-  #   volumes:
-  #     - pgdata:/var/lib/postgresql/data
-      
-# networks:
-#   app-network:
-#     driver: bridge
+    networks:
+      - app-network
+  postgres:
+    container_name: postgres
+    restart: unless-stopped
+    build:
+      context: .
+      dockerfile: Dockerfile.db
+    ports:
+      - ${POSTGRES_PORT}:${POSTGRES_PORT}
+    env_file:
+      - .env
+    command: postgres -c logging_collector=on
+    networks:
+      - app-network
+    volumes:
+      - pgdata:/var/lib/postgresql/data
+
+networks:
+  app-network:
+    driver: bridge
 
 volumes:
   ignore:
-  # pgdata:
+  pgdata:
