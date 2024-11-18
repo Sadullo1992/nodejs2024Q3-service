@@ -1,30 +1,32 @@
 import { Injectable } from '@nestjs/common';
-import { DatabaseService } from 'src/database/database.service';
+import { PrismaService } from 'src/prisma/prisma.service';
 import { CreateTrackDto } from './dto/create-track.dto';
 import { UpdateTrackDto } from './dto/update-track.dto';
-import { Track } from './entities/track.entity';
 
 @Injectable()
 export class TrackService {
-  private db = new DatabaseService<Track>();
+  constructor(private prisma: PrismaService) {}
 
-  create(createTrackDto: CreateTrackDto) {
-    return this.db.create(createTrackDto);
+  async create(createTrackDto: CreateTrackDto) {
+    return await this.prisma.track.create({ data: createTrackDto });
   }
 
-  findAll() {
-    return this.db.findAll();
+  async findAll() {
+    return await this.prisma.track.findMany();
   }
 
-  findOne(id: string) {
-    return this.db.findOne(id);
+  async findOne(id: string) {
+    return await this.prisma.track.findUnique({ where: { id } });
   }
 
-  update(id: string, updateTrackDto: UpdateTrackDto) {
-    return this.db.update(id, updateTrackDto);
+  async update(id: string, updateTrackDto: UpdateTrackDto) {
+    return await this.prisma.track.update({
+      where: { id },
+      data: updateTrackDto,
+    });
   }
 
-  remove(id: string) {
-    this.db.remove(id);
+  async remove(id: string) {
+    return await this.prisma.track.delete({ where: { id } });
   }
 }
