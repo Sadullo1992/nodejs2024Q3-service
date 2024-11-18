@@ -1,20 +1,10 @@
 import { Injectable } from '@nestjs/common';
 import { FAV_ID } from 'src/helpers/seedDatabase';
 import { PrismaService } from 'src/prisma/prisma.service';
-import { AlbumService } from '../album/album.service';
-import { ArtistService } from '../artist/artist.service';
-import { TrackService } from '../track/track.service';
-import { Favs } from './entities/fav.entity';
 
 @Injectable()
 export class FavsService {
   constructor(private prisma: PrismaService) {}
-
-  private favs: Favs = {
-    artists: [],
-    albums: [],
-    tracks: [],
-  };
 
   async findAll() {
     const favs = await this.prisma.favs.findUnique({

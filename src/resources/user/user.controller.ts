@@ -22,8 +22,9 @@ export class UserController {
   @Post()
   @HttpCode(HttpStatus.CREATED)
   async create(@Body() createUserDto: CreateUserDto) {
-    const { password, ...userWithoutPassword } =
-      await this.userService.create(createUserDto);
+    const { password, ...userWithoutPassword } = await this.userService.create(
+      createUserDto,
+    );
 
     return userWithoutPassword;
   }
