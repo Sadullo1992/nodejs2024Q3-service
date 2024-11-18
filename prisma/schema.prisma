@@ -21,3 +21,11 @@ model User {
     updatedAt BigInt
     version   Int    @default(1)
 }
+
+model Track {
+    id       String  @id @default(uuid())
+    name     String
+    artistId String?
+    albumId  String?
+    duration Int
+}

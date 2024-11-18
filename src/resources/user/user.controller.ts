@@ -21,16 +21,16 @@ export class UserController {
 
   @Post()
   @HttpCode(HttpStatus.CREATED)
-  create(@Body() createUserDto: CreateUserDto) {
+  async create(@Body() createUserDto: CreateUserDto) {
     const { password, ...userWithoutPassword } =
-      this.userService.create(createUserDto);
+      await this.userService.create(createUserDto);
 
     return userWithoutPassword;
   }
 
   @Get()
-  findAll() {
-    const users = this.userService.findAll();
+  async findAll() {
+    const users = await this.userService.findAll();
 
     const withoutPasswordUsers = users.map(({ password, ...rest }) => rest);
 
@@ -38,8 +38,8 @@ export class UserController {
   }
 
   @Get(':id')
-  findOne(@Param('id', ParseUUIDPipe) id: string) {
-    const user = this.userService.findOne(id);
+  async findOne(@Param('id', ParseUUIDPipe) id: string) {
+    const user = await this.userService.findOne(id);
 
     if (!user) throw new NotFoundException('User is not found!');
 
@@ -49,15 +49,15 @@ export class UserController {
   }
 
   @Put(':id')
-  update(
+  async update(
     @Param('id', ParseUUIDPipe) id: string,
     @Body() updatePasswordDto: UpdatePasswordDto,
   ) {
-    const user = this.userService.findOne(id);
+    const user = await this.userService.findOne(id);
 
     if (!user) throw new NotFoundException('User is not found!');
 
-    const { password, ...userWithoutPassword } = this.userService.update(
+    const { password, ...userWithoutPassword } = await this.userService.update(
       id,
       updatePasswordDto,
     );
@@ -67,11 +67,11 @@ export class UserController {
 
   @Delete(':id')
   @HttpCode(HttpStatus.NO_CONTENT)
-  remove(@Param('id', ParseUUIDPipe) id: string) {
-    const user = this.userService.findOne(id);
+  async remove(@Param('id', ParseUUIDPipe) id: string) {
+    const user = await this.userService.findOne(id);
 
     if (!user) throw new NotFoundException('User is not found!');
 
-    return this.userService.remove(id);
+    await this.userService.remove(id);
   }
 }
