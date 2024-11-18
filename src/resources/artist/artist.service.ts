@@ -1,53 +1,32 @@
 import { Injectable } from '@nestjs/common';
-import { DatabaseService } from 'src/database/database.service';
-import { AlbumService } from '../album/album.service';
-import { TrackService } from '../track/track.service';
+import { PrismaService } from 'src/prisma/prisma.service';
 import { CreateArtistDto } from './dto/create-artist.dto';
 import { UpdateArtistDto } from './dto/update-artist.dto';
-import { Artist } from './entities/artist.entity';
 
 @Injectable()
 export class ArtistService {
-  private db = new DatabaseService<Artist>();
+  constructor(private prisma: PrismaService) {}
 
-  constructor(
-    private trackService: TrackService,
-    private albumService: AlbumService,
-  ) {}
-
-  create(createArtistDto: CreateArtistDto) {
-    return this.db.create(createArtistDto);
+  async create(createArtistDto: CreateArtistDto) {
+    return await this.prisma.artist.create({ data: createArtistDto });
   }
 
-  findAll() {
-    return this.db.findAll();
+  async findAll() {
+    return await this.prisma.artist.findMany();
   }
 
-  findOne(id: string) {
-    return this.db.findOne(id);
+  async findOne(id: string) {
+    return await this.prisma.artist.findUnique({ where: { id } });
   }
 
-  update(id: string, updateArtistDto: UpdateArtistDto) {
-    return this.db.update(id, updateArtistDto);
-  }
-
-  remove(id: string) {
-    this.db.remove(id);
-
-    const artistTracks = this.trackService
-      .findAll()
-      .filter((track) => track.artistId === id);
-
-    artistTracks.forEach((track) => {
-      track.artistId = null;
+  async update(id: string, updateArtistDto: UpdateArtistDto) {
+    return await this.prisma.artist.update({
+      where: { id },
+      data: updateArtistDto,
     });
+  }
 
-    const artistAlbums = this.albumService
-      .findAll()
-      .filter((album) => album.artistId === id);
-
-    artistAlbums.forEach((album) => {
-      album.artistId = null;
-    });
+  async remove(id: string) {
+    return await this.prisma.artist.delete({ where: { id } });
   }
 }
