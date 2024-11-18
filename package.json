@@ -25,6 +25,7 @@
     "docker:cve:app": "docker scout cves sadullo/nodejs2024q3-service-node",
     "docker:cve:db": "docker scout cves sadullo/nodejs2024q3-service-postgres",
     "prisma:generate": "prisma generate",
+    "prisma:db:push": "prisma db push",
     "prisma:studio": "prisma studio",
     "prisma:migration:dev": "prisma migrate dev --name new_table",
     "prisma:migration:deploy": "prisma migrate deploy"
