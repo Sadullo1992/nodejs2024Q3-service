@@ -1,4 +1,6 @@
 import { Injectable } from '@nestjs/common';
+import { FAV_ID } from 'src/helpers/seedDatabase';
+import { PrismaService } from 'src/prisma/prisma.service';
 import { AlbumService } from '../album/album.service';
 import { ArtistService } from '../artist/artist.service';
 import { TrackService } from '../track/track.service';
@@ -6,11 +8,7 @@ import { Favs } from './entities/fav.entity';
 
 @Injectable()
 export class FavsService {
-  constructor(
-    private artistService: ArtistService,
-    private albumService: AlbumService,
-    private trackService: TrackService,
-  ) {}
+  constructor(private prisma: PrismaService) {}
 
   private favs: Favs = {
     artists: [],
@@ -18,57 +16,65 @@ export class FavsService {
     tracks: [],
   };
 
-  findAll() {
-    const allArtists = this.artistService.findAll();
-    const artists = allArtists.filter((artist) =>
-      this.favs.artists.some((artistId) => artistId === artist.id),
-    );
-
-    const allAlbums = this.albumService.findAll();
-    const albums = allAlbums.filter((album) =>
-      this.favs.albums.some((albumId) => albumId === album.id),
-    );
-
-    const allTracks = this.trackService.findAll();
-    const tracks = allTracks.filter((track) =>
-      this.favs.tracks.some((trackId) => trackId === track.id),
-    );
-
-    return { artists, albums, tracks };
+  async findAll() {
+    const favs = await this.prisma.favs.findUnique({
+      where: { id: FAV_ID },
+      include: { tracks: true, albums: true, artists: true },
+    });
+    return favs;
   }
 
-  // Only get their ids
-  getAllFavs() {
-    return this.favs;
+  async addTrack(id: string) {
+    return await this.prisma.favs.update({
+      where: { id: FAV_ID },
+      data: {
+        tracks: { connect: { id } },
+      },
+    });
   }
 
-  addTrack(id: string) {
-    this.favs.tracks.push(id);
+  async removeTrack(id: string) {
+    return await this.prisma.favs.update({
+      where: { id: FAV_ID },
+      data: {
+        tracks: { disconnect: { id } },
+      },
+    });
   }
 
-  removeTrack(id: string) {
-    const index = this.favs.tracks.findIndex((trackId) => trackId === id);
-
-    if (index > -1) this.favs.tracks.splice(index, 1);
+  async addArtist(id: string) {
+    return await this.prisma.favs.update({
+      where: { id: FAV_ID },
+      data: {
+        artists: { connect: { id } },
+      },
+    });
   }
 
-  addArtist(id: string) {
-    this.favs.artists.push(id);
+  async removeArtist(id: string) {
+    return await this.prisma.favs.update({
+      where: { id: FAV_ID },
+      data: {
+        artists: { disconnect: { id } },
+      },
+    });
   }
 
-  removeArtist(id: string) {
-    const index = this.favs.artists.findIndex((artistId) => artistId === id);
-
-    if (index > -1) this.favs.artists.splice(index, 1);
+  async addAlbum(id: string) {
+    return await this.prisma.favs.update({
+      where: { id: FAV_ID },
+      data: {
+        albums: { connect: { id } },
+      },
+    });
   }
 
-  addAlbum(id: string) {
-    this.favs.albums.push(id);
-  }
-
-  removeAlbum(id: string) {
-    const index = this.favs.albums.findIndex((albumId) => albumId === id);
-
-    if (index > -1) this.favs.albums.splice(index, 1);
+  async removeAlbum(id: string) {
+    return await this.prisma.favs.update({
+      where: { id: FAV_ID },
+      data: {
+        albums: { disconnect: { id } },
+      },
+    });
   }
 }

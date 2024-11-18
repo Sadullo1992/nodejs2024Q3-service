@@ -2,6 +2,7 @@ import { ValidationPipe } from '@nestjs/common';
 import { NestFactory } from '@nestjs/core';
 import { OpenAPIObject, SwaggerModule } from '@nestjs/swagger';
 import { AppModule } from './app.module';
+import { seedDatabase } from './helpers/seedDatabase';
 import { yamlFileLoader } from './helpers/yamlFileLoader';
 
 // Temporary fix for BigInt serialization
@@ -27,6 +28,9 @@ async function bootstrap() {
   // Swagger config
   const document = (await yamlFileLoader('./doc/api.yaml')) as OpenAPIObject;
   SwaggerModule.setup('api', app, document);
+
+  // Seed db
+  await seedDatabase();
 
   await app.listen(PORT);
 }
