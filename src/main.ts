@@ -1,5 +1,7 @@
 import { ValidationPipe } from '@nestjs/common';
-import { HttpAdapterHost, NestFactory } from '@nestjs/core';
+import { ConfigService } from '@nestjs/config';
+import { HttpAdapterHost, NestFactory, Reflector } from '@nestjs/core';
+import { JwtService } from '@nestjs/jwt';
 import { OpenAPIObject, SwaggerModule } from '@nestjs/swagger';
 import { AppModule } from './app.module';
 import { AllExceptionsFilter } from './exceptions/all-exceptions.filter';
@@ -7,6 +9,7 @@ import { seedDatabase } from './helpers/seedDatabase';
 import { yamlFileLoader } from './helpers/yamlFileLoader';
 import { LoggerInterceptor } from './logger/logger.interceptor';
 import { LogService } from './logger/logger.service';
+import { AuthGuard } from './resources/auth/auth.guard';
 
 // Temporary fix for BigInt serialization
 // https://github.com/expressjs/express/issues/4453
@@ -26,6 +29,12 @@ async function bootstrap() {
   const app = await NestFactory.create(AppModule, {
     logger: ['error', 'warn', 'log'],
   });
+
+  // Auth
+  const jwt = app.get(JwtService);
+  const config = app.get(ConfigService);
+  const reflector = app.get(Reflector);
+  app.useGlobalGuards(new AuthGuard(jwt, config, reflector));
 
   // Global Logger
   const logger = app.get<LogService>(LogService);
