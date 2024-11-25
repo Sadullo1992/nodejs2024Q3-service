@@ -29,6 +29,10 @@ After application running open new terminal and enter:
 
 To run all tests without authorization: `npm run test`
 
+To run all tests authorization: `npm run test:auth`
+
+To run all tests authorization with refresh token: `npm run test:refresh`
+
 ## Docker 
 
  - docker compose up: `npm run docker:up`
@@ -85,3 +89,7 @@ To run all tests without authorization: `npm run test`
 - `DELETE /favs/album/:id` - delete album from favorites
 - `POST /favs/artist/:id` - add artist to the favorites
 - `DELETE /favs/artist/:id` - delete artist from favorites
+
+## Technologies Used
+
+- Node.js, Nestjs, Swagger, Prisma, Postgresql, Docker
