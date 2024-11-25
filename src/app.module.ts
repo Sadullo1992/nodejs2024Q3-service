@@ -9,12 +9,13 @@ import { AlbumModule } from './resources/album/album.module';
 import { FavsModule } from './resources/favs/favs.module';
 import { PrismaModule } from './prisma/prisma.module';
 import { LoggerModule } from './logger/logger.module';
+import { AuthModule } from './resources/auth/auth.module';
 
 @Module({
   imports: [
     ConfigModule.forRoot({
       isGlobal: true,
-      envFilePath: '.env'
+      envFilePath: '.env',
     }),
     UserModule,
     DatabaseModule,
@@ -24,6 +25,7 @@ import { LoggerModule } from './logger/logger.module';
     FavsModule,
     PrismaModule,
     LoggerModule,
+    AuthModule,
   ],
   controllers: [AppController],
 })
