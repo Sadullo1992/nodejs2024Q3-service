@@ -21,7 +21,7 @@ Home Library REST Service! `Users` can create, read, update, delete data about `
 
 2. Access the API endpoints using a tool like Postman.
 
-3. The API documented by Swagger (OpenAPI) on `/api` endpoint.
+3. The API documented by Swagger (OpenAPI) on `/doc` endpoint.
 
 ## Testing
 
