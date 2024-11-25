@@ -7,7 +7,7 @@ Home Library REST Service! `Users` can create, read, update, delete data about `
 ## Installation
 
 1. Clone the repository: `git clone <repository-url>`
-2. Go to `develop` branch
+2. Go to `logging/auth` branch
 3. Install the required dependencies by running `npm install`
 4. Put environment variables to `.env` file
 5. Containerization - docker compose: `npm run docker:up`
@@ -21,13 +21,17 @@ Home Library REST Service! `Users` can create, read, update, delete data about `
 
 2. Access the API endpoints using a tool like Postman.
 
-3. The API documented by Swagger (OpenAPI) on `/api` endpoint.
+3. The API documented by Swagger (OpenAPI) on `/doc` endpoint.
 
 ## Testing
 
 After application running open new terminal and enter:
 
 To run all tests without authorization: `npm run test`
+
+To run all tests authorization: `npm run test:auth`
+
+To run all tests authorization with refresh token: `npm run test:refresh`
 
 ## Docker 
 
@@ -85,3 +89,7 @@ To run all tests without authorization: `npm run test`
 - `DELETE /favs/album/:id` - delete album from favorites
 - `POST /favs/artist/:id` - add artist to the favorites
 - `DELETE /favs/artist/:id` - delete artist from favorites
+
+## Technologies Used
+
+- Node.js, Nestjs, Swagger, Prisma, Postgresql, Docker
