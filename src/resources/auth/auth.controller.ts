@@ -4,6 +4,7 @@ import { UserService } from '../user/user.service';
 import { AuthService } from './auth.service';
 import { LoginUserDto } from './dto/login-user.dto';
 import { RefreshTokenDto } from './dto/refresh-token.dto';
+import { Public } from './public.decorator';
 
 @Controller('auth')
 export class AuthController {
@@ -12,18 +13,21 @@ export class AuthController {
     private userService: UserService,
   ) {}
 
+  @Public()
   @Post('/signup')
   @HttpCode(HttpStatus.CREATED)
   signup(@Body() signupDto: CreateUserDto) {
     return this.userService.create(signupDto);
   }
 
+  @Public()
   @Post('/login')
   @HttpCode(HttpStatus.OK)
   login(@Body() loginUserDto: LoginUserDto) {
     return this.authService.login(loginUserDto);
   }
 
+  @Public()
   @Post('/refresh')
   @HttpCode(HttpStatus.OK)
   refresh(@Body() refreshTokenDto: RefreshTokenDto) {
