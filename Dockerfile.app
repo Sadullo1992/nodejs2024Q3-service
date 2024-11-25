@@ -12,6 +12,7 @@ RUN npm install --omit=dev
 
 FROM base
 COPY --from=dev /usr/app/dist ./dist
+COPY --from=dev /usr/app/logs ./logs
 COPY --from=dev /usr/app/prisma ./prisma
 COPY --from=dev /usr/app/package*.json ./
 COPY --from=dev /usr/app/tsconfig*.json ./

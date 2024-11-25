@@ -1,0 +1,58 @@
+[Nest] 225  - 11/25/2024, 3:05:59 PM     ERROR Validation failed (uuid  is expected)
+[Nest] 225  - 11/25/2024, 3:05:59 PM     ERROR Album is not found!
+[Nest] 225  - 11/25/2024, 3:05:59 PM     ERROR Track is not found!
+[Nest] 225  - 11/25/2024, 3:06:00 PM     ERROR Validation failed (uuid  is expected)
+[Nest] 225  - 11/25/2024, 3:06:00 PM     ERROR Album is not found!
+[Nest] 225  - 11/25/2024, 3:06:00 PM     ERROR Artist is not found!
+[Nest] 225  - 11/25/2024, 3:06:00 PM     ERROR Track is not found!
+[Nest] 225  - 11/25/2024, 3:06:01 PM     ERROR Validation failed (uuid  is expected)
+[Nest] 225  - 11/25/2024, 3:06:01 PM     ERROR User is not found!
+[Nest] 225  - 11/25/2024, 3:06:01 PM     ERROR Bad Request Exception
+[Nest] 225  - 11/25/2024, 3:06:01 PM     ERROR Bad Request Exception
+[Nest] 225  - 11/25/2024, 3:06:01 PM     ERROR Bad Request Exception
+[Nest] 225  - 11/25/2024, 3:06:01 PM     ERROR Bad Request Exception
+[Nest] 225  - 11/25/2024, 3:06:01 PM     ERROR Old password is wrong
+[Nest] 225  - 11/25/2024, 3:06:01 PM     ERROR Validation failed (uuid  is expected)
+[Nest] 225  - 11/25/2024, 3:06:01 PM     ERROR Bad Request Exception
+[Nest] 225  - 11/25/2024, 3:06:01 PM     ERROR User is not found!
+[Nest] 225  - 11/25/2024, 3:06:01 PM     ERROR User is not found!
+[Nest] 225  - 11/25/2024, 3:06:01 PM     ERROR Validation failed (uuid  is expected)
+[Nest] 225  - 11/25/2024, 3:06:01 PM     ERROR User is not found!
+[Nest] 225  - 11/25/2024, 3:06:02 PM     ERROR Validation failed (uuid  is expected)
+[Nest] 225  - 11/25/2024, 3:06:02 PM     ERROR Album is not found!
+[Nest] 225  - 11/25/2024, 3:06:02 PM     ERROR Bad Request Exception
+[Nest] 225  - 11/25/2024, 3:06:02 PM     ERROR Bad Request Exception
+[Nest] 225  - 11/25/2024, 3:06:02 PM     ERROR Bad Request Exception
+[Nest] 225  - 11/25/2024, 3:06:02 PM     ERROR Bad Request Exception
+[Nest] 225  - 11/25/2024, 3:06:02 PM     ERROR Validation failed (uuid  is expected)
+[Nest] 225  - 11/25/2024, 3:06:02 PM     ERROR Bad Request Exception
+[Nest] 225  - 11/25/2024, 3:06:02 PM     ERROR Album is not found!
+[Nest] 225  - 11/25/2024, 3:06:02 PM     ERROR Album is not found!
+[Nest] 225  - 11/25/2024, 3:06:02 PM     ERROR Validation failed (uuid  is expected)
+[Nest] 225  - 11/25/2024, 3:06:02 PM     ERROR Album is not found!
+[Nest] 225  - 11/25/2024, 3:06:03 PM     ERROR Validation failed (uuid  is expected)
+[Nest] 225  - 11/25/2024, 3:06:03 PM     ERROR Artist is not found!
+[Nest] 225  - 11/25/2024, 3:06:03 PM     ERROR Bad Request Exception
+[Nest] 225  - 11/25/2024, 3:06:03 PM     ERROR Bad Request Exception
+[Nest] 225  - 11/25/2024, 3:06:03 PM     ERROR Bad Request Exception
+[Nest] 225  - 11/25/2024, 3:06:03 PM     ERROR Bad Request Exception
+[Nest] 225  - 11/25/2024, 3:06:03 PM     ERROR Validation failed (uuid  is expected)
+[Nest] 225  - 11/25/2024, 3:06:03 PM     ERROR Bad Request Exception
+[Nest] 225  - 11/25/2024, 3:06:03 PM     ERROR Artist is not found!
+[Nest] 225  - 11/25/2024, 3:06:03 PM     ERROR Artist is not found!
+[Nest] 225  - 11/25/2024, 3:06:03 PM     ERROR Validation failed (uuid  is expected)
+[Nest] 225  - 11/25/2024, 3:06:03 PM     ERROR Artist is not found!
+[Nest] 225  - 11/25/2024, 3:06:04 PM     ERROR Validation failed (uuid  is expected)
+[Nest] 225  - 11/25/2024, 3:06:04 PM     ERROR Track is not found!
+[Nest] 225  - 11/25/2024, 3:06:04 PM     ERROR Bad Request Exception
+[Nest] 225  - 11/25/2024, 3:06:04 PM     ERROR Bad Request Exception
+[Nest] 225  - 11/25/2024, 3:06:04 PM     ERROR Bad Request Exception
+[Nest] 225  - 11/25/2024, 3:06:04 PM     ERROR Bad Request Exception
+[Nest] 225  - 11/25/2024, 3:06:04 PM     ERROR Validation failed (uuid  is expected)
+[Nest] 225  - 11/25/2024, 3:06:04 PM     ERROR Bad Request Exception
+[Nest] 225  - 11/25/2024, 3:06:04 PM     ERROR Track is not found!
+[Nest] 225  - 11/25/2024, 3:06:05 PM     ERROR Track is not found!
+[Nest] 225  - 11/25/2024, 3:06:05 PM     ERROR Validation failed (uuid  is expected)
+[Nest] 225  - 11/25/2024, 3:06:05 PM     ERROR Track is not found!
+[Nest] 373  - 11/25/2024, 3:09:28 PM     ERROR Internal server error
+[Nest] 373  - 11/25/2024, 3:09:28 PM     ERROR Cannot GET /favicon.ico

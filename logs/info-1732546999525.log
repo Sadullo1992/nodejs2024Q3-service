@@ -1,0 +1,38 @@
+[Nest] 191  - 11/25/2024, 3:03:19 PM     LOG Mapped {/favs/track/:id, POST} route
+[Nest] 191  - 11/25/2024, 3:03:19 PM     LOG Mapped {/favs/artist/:id, DELETE} route
+[Nest] 191  - 11/25/2024, 3:03:19 PM     LOG Nest application successfully started
+[Nest] 225  - 11/25/2024, 3:03:55 PM     LOG AppController {/}:
+[Nest] 225  - 11/25/2024, 3:03:55 PM     LOG Mapped {/user, POST} route
+[Nest] 225  - 11/25/2024, 3:03:55 PM     LOG UserController {/user}:
+[Nest] 225  - 11/25/2024, 3:03:55 PM     LOG Mapped {/user, GET} route
+[Nest] 225  - 11/25/2024, 3:03:55 PM     LOG Mapped {/user/:id, GET} route
+[Nest] 225  - 11/25/2024, 3:03:55 PM     LOG Mapped {/user/:id, PUT} route
+[Nest] 225  - 11/25/2024, 3:03:55 PM     LOG Mapped {/, GET} route
+[Nest] 225  - 11/25/2024, 3:03:55 PM     LOG TrackController {/track}:
+[Nest] 225  - 11/25/2024, 3:03:55 PM     LOG Mapped {/track, POST} route
+[Nest] 225  - 11/25/2024, 3:03:55 PM     LOG Mapped {/track, GET} route
+[Nest] 225  - 11/25/2024, 3:03:55 PM     LOG Mapped {/track/:id, GET} route
+[Nest] 225  - 11/25/2024, 3:03:55 PM     LOG Mapped {/track/:id, PUT} route
+[Nest] 225  - 11/25/2024, 3:03:55 PM     LOG Mapped {/track/:id, DELETE} route
+[Nest] 225  - 11/25/2024, 3:03:55 PM     LOG Mapped {/user/:id, DELETE} route
+[Nest] 225  - 11/25/2024, 3:03:55 PM     LOG Mapped {/artist, POST} route
+[Nest] 225  - 11/25/2024, 3:03:55 PM     LOG ArtistController {/artist}:
+[Nest] 225  - 11/25/2024, 3:03:55 PM     LOG Mapped {/artist, GET} route
+[Nest] 225  - 11/25/2024, 3:03:55 PM     LOG Mapped {/artist/:id, GET} route
+[Nest] 225  - 11/25/2024, 3:03:55 PM     LOG Mapped {/artist/:id, PUT} route
+[Nest] 225  - 11/25/2024, 3:03:55 PM     LOG Mapped {/album, POST} route
+[Nest] 225  - 11/25/2024, 3:03:55 PM     LOG Mapped {/artist/:id, DELETE} route
+[Nest] 225  - 11/25/2024, 3:03:55 PM     LOG AlbumController {/album}:
+[Nest] 225  - 11/25/2024, 3:03:55 PM     LOG Mapped {/album, GET} route
+[Nest] 225  - 11/25/2024, 3:03:55 PM     LOG Mapped {/album/:id, GET} route
+[Nest] 225  - 11/25/2024, 3:03:55 PM     LOG Mapped {/album/:id, DELETE} route
+[Nest] 225  - 11/25/2024, 3:03:55 PM     LOG Mapped {/album/:id, PUT} route
+[Nest] 225  - 11/25/2024, 3:03:55 PM     LOG FavsController {/favs}:
+[Nest] 225  - 11/25/2024, 3:03:55 PM     LOG Mapped {/favs, GET} route
+[Nest] 225  - 11/25/2024, 3:03:55 PM     LOG Mapped {/favs/track/:id, DELETE} route
+[Nest] 225  - 11/25/2024, 3:03:55 PM     LOG Mapped {/favs/track/:id, POST} route
+[Nest] 225  - 11/25/2024, 3:03:55 PM     LOG Mapped {/favs/artist/:id, POST} route
+[Nest] 225  - 11/25/2024, 3:03:55 PM     LOG Mapped {/favs/artist/:id, DELETE} route
+[Nest] 225  - 11/25/2024, 3:03:55 PM     LOG Mapped {/favs/album/:id, DELETE} route
+[Nest] 225  - 11/25/2024, 3:03:55 PM     LOG Mapped {/favs/album/:id, POST} route
+[Nest] 225  - 11/25/2024, 3:03:55 PM     LOG Nest application successfully started
