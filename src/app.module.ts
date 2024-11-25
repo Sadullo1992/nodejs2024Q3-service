@@ -8,10 +8,14 @@ import { ArtistModule } from './resources/artist/artist.module';
 import { AlbumModule } from './resources/album/album.module';
 import { FavsModule } from './resources/favs/favs.module';
 import { PrismaModule } from './prisma/prisma.module';
+import { LoggerModule } from './logger/logger.module';
 
 @Module({
   imports: [
-    ConfigModule.forRoot(),
+    ConfigModule.forRoot({
+      isGlobal: true,
+      envFilePath: '.env'
+    }),
     UserModule,
     DatabaseModule,
     TrackModule,
@@ -19,6 +23,7 @@ import { PrismaModule } from './prisma/prisma.module';
     AlbumModule,
     FavsModule,
     PrismaModule,
+    LoggerModule,
   ],
   controllers: [AppController],
 })
