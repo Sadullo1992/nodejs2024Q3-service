@@ -7,7 +7,7 @@ Home Library REST Service! `Users` can create, read, update, delete data about `
 ## Installation
 
 1. Clone the repository: `git clone <repository-url>`
-2. Go to `develop` branch
+2. Go to `logging/auth` branch
 3. Install the required dependencies by running `npm install`
 4. Put environment variables to `.env` file
 5. Containerization - docker compose: `npm run docker:up`
